@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2:1 Mentoring | Você Foi Feito para Projetos Maiores</title>
+    <meta name="description" content="A Mentoria 2:1 da Painap te ensina a estruturar uma operação comercial B2B de alto padrão. Aprenda o método de arquitetura de consumo com Carina e Pamella.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Mosvita', 'sans-serif'],
+                        luxury: ['"Luxury Rigane"', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            black: '#120A05', // Tom super escuro derivado do #4B2A14 (café)
+                            dark: '#2A170A',  // Tom escuro quente
+                            red: '#E1461C',   // Vermelho/Laranja oficial da marca
+                            accent: '#F9B044', // Âmbar/Dourado oficial
+                            beige: '#EDE3C2', // Bege claro
+                            gold: '#CABB84',  // Dourado pálido
+                            moss: '#606D50',  // Verde musgo
+                            white: '#F9F8F6', // Off-white puxado pro bege
+                            gray: '#CABB84'   // Usando o dourado escurecido no lugar de cinza
+                        }
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0V0zm39 39V1H1v38h38z' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* =============================================
+           TIPOGRAFIA — HIERARQUIA 2:1 MENTORING
+           Luxury Rigane → Display / H1 / Destaques premium
+           Mosvita       → Todo o resto (H2–H6, body, UI)
+        ============================================= */
+
+        /* LUXURY RIGANE — familia display */
+        @font-face {
+            font-family: 'Luxury Rigane';
+            src: url('fonts/luxury-rigane-light.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Luxury Rigane';
+            src: url('fonts/luxury-rigane-regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Luxury Rigane';
+            src: url('fonts/luxury-rigane-bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* MOSVITA — familia funcional */
+        @font-face {
+            font-family: 'Mosvita';
+            src: url('fonts/mosvita-light.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Mosvita';
+            src: url('fonts/mosvita-regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Mosvita';
+            src: url('fonts/mosvita-semibold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Mosvita';
+            src: url('fonts/mosvita-bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Mosvita';
+            src: url('fonts/mosvita-extrabold.ttf') format('truetype');
+            font-weight: 800;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Mosvita';
+            src: url('fonts/mosvita-black.ttf') format('truetype');
+            font-weight: 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* BASE */
+        body {
+            background-color: #0A0A0A;
+            color: #F5F5F5;
+            font-family: 'Mosvita', sans-serif;
+            font-weight: 400;
+        }
+
+        /* HIERARQUIA DE TÍTULOS
+           H1 → Luxury Rigane Bold  (display, presença, assina a marca)
+           H2 → Mosvita Extrabold   (força estrutural das seções)
+           H3 → Mosvita Bold        (sub-seções, cards)
+           H4-H6 → Mosvita Semibold (labels, micro-títulos)
+        */
+        h1 {
+            font-family: 'Luxury Rigane', serif;
+            font-weight: 700;
+        }
+        h2 {
+            font-family: 'Mosvita', sans-serif;
+            font-weight: 800;
+        }
+        h3 {
+            font-family: 'Mosvita', sans-serif;
+            font-weight: 700;
+        }
+        h4, h5, h6 {
+            font-family: 'Mosvita', sans-serif;
+            font-weight: 600;
+        }
+
+        /* UTILITÁRIOS DE TIPO */
+        .font-luxury {
+            font-family: 'Luxury Rigane', serif;
+            font-weight: 700;
+            text-transform: none;
+            letter-spacing: -0.01em;
+        }
+        .font-luxury-thin {
+            font-family: 'Luxury Rigane', serif;
+            font-weight: 300;
+            text-transform: none;
+            letter-spacing: 0.02em;
+        }
+
+        .text-glow {
+            text-shadow: 0 0 20px rgba(225, 70, 28, 0.4); /* #E1461C com opacidade */
+        }
+
+        .border-gradient {
+            background: linear-gradient(#141414, #141414) padding-box,
+                        linear-gradient(to right, #E50914, #2A0202) border-box;
+            border: 1px solid transparent;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .animate-marquee {
+            animation: marquee 40s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn-hover-effect {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-hover-effect::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .btn-hover-effect:hover::before {
+            left: 100%;
+        }
+        
+        .sharp-edge {
+            border-radius: 0 !important;
+        }
+
+        /* Logo com fundo transparente — sem filtro necessário */
+        .logo-dark {
+            display: block;
+        }
+    </style>
+</head>
+<body class="antialiased font-sans bg-brand-black selection:bg-brand-red selection:text-white">
+
+    <!-- NAVIGATION (Minimalist Tech) -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-brand-black/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center">
+                <img src="logo.png" alt="2:1 Mentoring" class="h-12 w-auto logo-dark">
+            </a>
+            <a href="#cta" class="hidden md:flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-white border border-white/20 px-6 py-3 sharp-edge hover:bg-white hover:text-brand-black transition-colors">
+                Aplicar para Mentoria
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION (G4 Business Brutalist Vibe) -->
+    <header class="relative min-h-[95vh] flex items-center pt-20 overflow-hidden bg-grid-pattern">
+        <!-- Glow effects -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-red/20 rounded-full blur-[120px] -z-10"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-red/10 rounded-full blur-[100px] -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-6 w-full relative z-10 grid md:grid-cols-[60%_40%] gap-12 items-center">
+            <div class="space-y-8 reveal">
+                <div class="inline-flex items-center gap-2 px-3 py-1 border border-brand-red/30 bg-brand-red/10 sharp-edge text-brand-red text-xs font-bold uppercase tracking-widest">
+                    <span class="w-2 h-2 rounded-full bg-brand-red animate-pulse"></span>
+                    Mentoria 2:1 | Primeira Turma
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl leading-[1.05] tracking-tight">
+                    Você foi feito<br>para projetos <span class="text-brand-red text-glow">maiores.</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-brand-gray max-w-2xl leading-relaxed">
+                    O residencial te consome. Cobra emoção, paga pouco e não escala. A Mentoria 2:1 te mostra como estruturar uma operação comercial com <strong class="text-white">clientes B2B, ticket alto e faturamento que você consegue planejar.</strong>
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="#cta" class="btn-hover-effect flex items-center justify-center gap-2 bg-brand-red text-white px-8 py-5 text-sm font-bold uppercase tracking-widest sharp-edge w-full sm:w-auto">
+                        Quero entrar na 1ª turma
+                        <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+
+                <!-- Social Proof -->
+                <div class="pt-8 border-t border-white/10 flex items-center gap-6">
+                    <div class="flex -space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-dark border-2 border-brand-black overflow-hidden flex items-center justify-center text-xs font-bold">+1k</div>
+                        <div class="w-10 h-10 rounded-full bg-brand-dark border-2 border-brand-black overflow-hidden flex items-center justify-center text-xs font-bold">$$</div>
+                    </div>
+                    <div class="text-sm text-brand-gray">
+                        Baseado em <strong class="text-white">+1.500 projetos reais entregues</strong> por quem vai te mentorar
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative hidden md:block reveal" style="transition-delay: 0.2s;">
+                <div class="absolute inset-0 bg-gradient-to-tr from-brand-red/20 to-transparent blur-2xl"></div>
+                <div class="border border-white/10 bg-brand-dark/50 backdrop-blur-sm p-4 md:p-8 sharp-edge relative group">
+                    <img src="mentoras.png?v=3" alt="Carina e Pamella" class="w-full h-auto sharp-edge shadow-lg group-hover:scale-[1.02] transition-transform duration-700">
+                    <div class="absolute bottom-4 left-4 bg-brand-black px-4 py-2 border-l-2 border-brand-red text-sm font-bold uppercase">
+                        Carina & Pamella
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- TRUSTED BY / CLIENTES (2-Line Marquee) -->
+    <div class="py-12 bg-brand-black border-y border-white/5 overflow-hidden relative flex flex-col gap-6">
+        <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-brand-black to-transparent z-10"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-brand-black to-transparent z-10"></div>
+        
+        <!-- Linha 1 -->
+        <div class="flex animate-marquee w-max items-center">
+            <div class="flex items-center gap-12 px-6 text-xl md:text-2xl font-bold uppercase text-brand-gray/30 tracking-widest font-luxury">
+                <span>Globo</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Corinthians</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Fendt</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Valtra</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Mr. Cheney</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Pizza do Faustão</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Personalize Pharma</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Divina Terra</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Crepefy</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Otta Café</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Shogun Team</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Donna Sorvetes</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Velssa</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>You Man</span> <span class="text-brand-red/30 text-sm">✦</span>
+            </div>
+            <!-- Duplicado para loop -->
+            <div class="flex items-center gap-12 px-6 text-xl md:text-2xl font-bold uppercase text-brand-gray/30 tracking-widest font-luxury">
+                <span>Globo</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Corinthians</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Fendt</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Valtra</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Mr. Cheney</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Pizza do Faustão</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Personalize Pharma</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Divina Terra</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Crepefy</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Otta Café</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Shogun Team</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Donna Sorvetes</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Velssa</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>You Man</span> <span class="text-brand-red/30 text-sm">✦</span>
+            </div>
+        </div>
+
+        <!-- Linha 2 -->
+        <div class="flex animate-marquee w-max items-center" style="animation-direction: reverse; animation-duration: 45s;">
+            <div class="flex items-center gap-12 px-6 text-xl md:text-2xl font-bold uppercase text-brand-gray/30 tracking-widest font-luxury">
+                <span>Arroz e Feijão</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Banana Food</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Brazero</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Chefinhos</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Go Laser</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>HotSalty</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Hypper</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>L de Linda</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Loucos por Ti</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Maria Fit</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Meu Personal</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Mucci</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Nhô Sorvetes</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>QBab</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Tortela</span> <span class="text-brand-red/30 text-sm">✦</span>
+            </div>
+            <!-- Duplicado para loop -->
+            <div class="flex items-center gap-12 px-6 text-xl md:text-2xl font-bold uppercase text-brand-gray/30 tracking-widest font-luxury">
+                <span>Arroz e Feijão</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Banana Food</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Brazero</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Chefinhos</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Go Laser</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>HotSalty</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Hypper</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>L de Linda</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Loucos por Ti</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Maria Fit</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Meu Personal</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Mucci</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Nhô Sorvetes</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>QBab</span> <span class="text-brand-red/30 text-sm">✦</span>
+                <span>Tortela</span> <span class="text-brand-red/30 text-sm">✦</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- AGITATION SECTION (A Dor / O Problema) -->
+    <section class="py-24 bg-brand-black border-y border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tight mb-8">
+                        Você não está cansado da arquitetura.<br>
+                        <span class="text-brand-gray">Você está preso no modelo errado.</span>
+                    </h2>
+                    
+                    <p class="text-brand-gray text-lg mb-8">
+                        No residencial, você vende emoção. No comercial, você entrega resultado. E resultado se paga diferente. Reconhece alguma dessas situações?
+                    </p>
+
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4">
+                            <div class="w-6 h-6 shrink-0 rounded-full bg-brand-red/20 flex items-center justify-center mt-1">
+                                <i data-lucide="x" class="w-4 h-4 text-brand-red"></i>
+                            </div>
+                            <span class="text-lg text-brand-gray">Horas e horas de projeto para uma <strong class="text-white">margem que não fecha</strong></span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-6 h-6 shrink-0 rounded-full bg-brand-red/20 flex items-center justify-center mt-1">
+                                <i data-lucide="x" class="w-4 h-4 text-brand-red"></i>
+                            </div>
+                            <span class="text-lg text-brand-gray">Faturamento que some no mês seguinte: <strong class="text-white">sem previsibilidade nenhuma</strong></span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-6 h-6 shrink-0 rounded-full bg-brand-red/20 flex items-center justify-center mt-1">
+                                <i data-lucide="x" class="w-4 h-4 text-brand-red"></i>
+                            </div>
+                            <span class="text-lg text-brand-gray">Clientes que questionam cada linha do contrato e <strong class="text-white">pechincham até o último centavo</strong></span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-brand-dark border border-white/5 p-10 sharp-edge reveal" style="transition-delay: 0.2s;">
+                    <i data-lucide="trending-up" class="w-12 h-12 text-brand-red mb-6"></i>
+                    <h3 class="text-2xl font-bold uppercase tracking-tight mb-4">A realidade que ninguém fala:</h3>
+                    <p class="text-xl leading-relaxed">
+                        Enquanto você briga por projetos residenciais com dezenas de concorrentes, o mercado B2B cresce sem parar, e <strong class="text-brand-red">com muito menos gente treinada para atendê-lo.</strong>
+                    </p>
+                    <div class="mt-8 space-y-4">
+                        <div class="flex items-center gap-4 text-brand-gray border-b border-white/5 pb-4">
+                            <i data-lucide="check" class="text-white"></i> Alta Demanda B2B
+                        </div>
+                        <div class="flex items-center gap-4 text-brand-gray border-b border-white/5 pb-4">
+                            <i data-lucide="check" class="text-white"></i> Menos Concorrência
+                        </div>
+                        <div class="flex items-center gap-4 text-brand-gray">
+                            <i data-lucide="check" class="text-white"></i> Tickets Maiores e Recorrentes
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PILLARS SECTION -->
+    <section class="py-32 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-24 reveal">
+                <div class="inline-block bg-brand-red/10 text-brand-red px-4 py-1 text-xs font-bold uppercase tracking-[0.2em] sharp-edge mb-6">Business Intelligence</div>
+                <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tight leading-none mb-6">
+                    Os 4 Pilares da<br>
+                    <span class="text-brand-red">Arquitetura de Consumo</span>
+                </h2>
+                <p class="text-brand-gray mt-6 max-w-3xl mx-auto text-xl leading-relaxed">
+                    O problema não é você trabalhar mal. É que o modelo residencial foi construído para te manter <strong class="text-white">pequeno.</strong> Aqui você aprende a pensar como empresa.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-brand-dark/30 p-12 sharp-edge reveal group hover:bg-brand-red/5 transition-all duration-500 border border-white/5 relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 text-8xl font-black text-white/[0.03] group-hover:text-brand-red/10 transition-colors">01</div>
+                    <div class="w-14 h-14 bg-brand-red/10 flex items-center justify-center text-brand-red mb-8">
+                        <i data-lucide="layers" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black uppercase tracking-tight mb-6">
+                        Engenharia de Processos
+                    </h3>
+                    <p class="text-brand-gray mb-8 leading-relaxed">Não é sobre "organização", é sobre previsibilidade. Criamos fluxos onde a entrega não depende do seu humor ou do seu tempo.</p>
+                    <ul class="space-y-4 text-sm uppercase font-bold tracking-widest text-white/50">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-brand-red"></span> Fluxos de Entrega Ágeis</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-brand-red"></span> Manuais de Padronização</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-brand-red"></span> Qualidade Escalável</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-brand-dark/30 p-12 sharp-edge reveal group hover:bg-brand-red/5 transition-all duration-500 border border-white/5 relative overflow-hidden" style="transition-delay: 0.1s;">
+                    <div class="absolute -right-4 -top-4 text-8xl font-black text-white/[0.03] group-hover:text-brand-red/10 transition-colors">02</div>
+                    <div class="w-14 h-14 bg-brand-red/10 flex items-center justify-center text-brand-red mb-8">
+                        <i data-lucide="zap" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black uppercase tracking-tight mb-6">
+                        Alta Performance Operacional
+                    </h3>
+                    <p class="text-brand-gray mb-8 leading-relaxed">O tempo é seu ativo mais caro. Ensinamos como gerir demandas complexas sem se tornar refém da própria agenda.</p>
+                    <ul class="space-y-4 text-sm uppercase font-bold tracking-widest text-white/50">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-brand-red"></span> Gestão de Prazos Críticos</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-brand-red"></span> Planejamento de Sprints</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-brand-red"></span> Autonomia de Equipe</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-brand-dark/30 p-12 sharp-edge reveal group hover:bg-brand-red/5 transition-all duration-500 border border-white/5 relative overflow-hidden" style="transition-delay: 0.2s;">
+                    <div class="absolute -right-4 -top-4 text-8xl font-black text-white/[0.03] group-hover:text-brand-red/10 transition-colors">03</div>
+                    <div class="w-14 h-14 bg-brand-red/10 flex items-center justify-center text-brand-red mb-8">
+                        <i data-lucide="target" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black uppercase tracking-tight mb-6">
+                        Design Focado em Conversão
+                    </h3>
+                    <p class="text-brand-gray mb-8 leading-relaxed">Na Painap, estética serve ao lucro. Você vai aprender a criar ambientes que induzem o consumo e validam o ticket alto.</p>
+                    <ul class="space-y-4 text-sm uppercase font-bold tracking-widest text-white/50">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-brand-red"></span> Briefing B2B Estratégico</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-brand-red"></span> Neuroarquitetura Comercial</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-brand-red"></span> Validação Visual de Marca</li>
+                    </ul>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-brand-dark/30 p-12 sharp-edge reveal group hover:bg-brand-red/5 transition-all duration-500 border border-white/5 relative overflow-hidden" style="transition-delay: 0.3s;">
+                    <div class="absolute -right-4 -top-4 text-8xl font-black text-white/[0.03] group-hover:text-brand-red/10 transition-colors">04</div>
+                    <div class="w-14 h-14 bg-brand-red/10 flex items-center justify-center text-brand-red mb-8">
+                        <i data-lucide="trending-up" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black uppercase tracking-tight mb-6">
+                        Escala Comercial e Lucro
+                    </h3>
+                    <p class="text-brand-gray mb-8 leading-relaxed">Arquitetura é business. Te ensinamos a precificar por valor gerado, gerir equipe e atrair clientes que pagam pelo seu cérebro.</p>
+                    <ul class="space-y-4 text-sm uppercase font-bold tracking-widest text-white/50">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-brand-red"></span> Precificação High Ticket</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-brand-red"></span> Gestão de Ativos Financeiros</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-brand-red"></span> Posicionamento de Autoridade</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENTORS SECTION -->
+    <section class="py-24 bg-brand-white text-brand-black">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative reveal group">
+                <div class="absolute inset-0 bg-brand-red translate-x-4 translate-y-4 sharp-edge transition-transform group-hover:translate-x-6 group-hover:translate-y-6 duration-500"></div>
+                <img src="Pamella e Carina-36.jpg?v=1" alt="Carina e Pamella" class="relative z-10 sharp-edge w-full object-cover shadow-2xl">
+            </div>
+            
+            <div class="reveal" style="transition-delay: 0.2s;">
+                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tight mb-8">
+                    Não é teoria.<br><span class="text-brand-red">É método de quem opera.</span>
+                </h2>
+                
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-bold uppercase mb-2">Carina Guevara</h3>
+                        <p class="text-brand-dark/80 text-lg">Sócia co-fundadora da Painap, especialista em posicionamento e inovação. Transforma tendência em resultado de caixa. É a responsável por fazer marcas parecerem inevitáveis dentro do espaço.</p>
+                    </div>
+                    
+                    <div class="border-t border-black/10 pt-8">
+                        <h3 class="text-2xl font-bold uppercase mb-2">Pamella Gonçalves</h3>
+                        <p class="text-brand-dark/80 text-lg">Sócia fundadora da Painap. 15 anos operando arquitetura comercial de ponta. Para ela, cada projeto tem que responder uma pergunta: <em>quanto isso vai vender?</em></p>
+                    </div>
+                </div>
+
+                <div class="mt-10 flex flex-col sm:flex-row gap-4">
+                    <div class="inline-block bg-brand-black text-white px-6 py-3 font-bold uppercase tracking-widest text-sm sharp-edge border-l-2 border-brand-red">
+                        +1.500 Projetos Reais Entregues
+                    </div>
+                    <div class="inline-block bg-brand-black text-white px-6 py-3 font-bold uppercase tracking-widest text-sm sharp-edge border-l-2 border-brand-red">
+                        +15 Anos no Mercado Comercial
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TWO PATHS SECTION -->
+    <section class="py-24 bg-brand-black border-y border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tight mb-4">Escolha o seu <span class="text-brand-red">Nível de Jogo</span></h2>
+                <p class="text-xl text-brand-gray">Dois caminhos exclusivos para dominar a Arquitetura de Consumo.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 reveal" style="transition-delay: 0.2s;">
+                <!-- Path 1: Mentoria -->
+                <div class="border border-white/10 bg-brand-dark/50 p-10 sharp-edge flex flex-col h-full group hover:border-brand-red/50 transition-colors">
+                    <div class="mb-8">
+                        <div class="inline-block bg-white/5 text-brand-gray px-4 py-2 text-xs font-bold uppercase tracking-widest sharp-edge mb-6">A Formação</div>
+                        <h3 class="text-3xl font-black uppercase text-white mb-4">Mentoria 2:1</h3>
+                        <p class="text-brand-gray text-lg leading-relaxed">Você aprende o método exato da Painap para aplicar no seu próprio escritório e escalar sua marca no B2B.</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-start gap-3 text-brand-gray"><i data-lucide="check" class="w-5 h-5 text-brand-red shrink-0 mt-1"></i> Acesso direto a Pamella e Carina</li>
+                        <li class="flex items-start gap-3 text-brand-gray"><i data-lucide="check" class="w-5 h-5 text-brand-red shrink-0 mt-1"></i> 100% da operação continua sua</li>
+                        <li class="flex items-start gap-3 text-brand-gray"><i data-lucide="check" class="w-5 h-5 text-brand-red shrink-0 mt-1"></i> Implantação dos 4 pilares no seu negócio</li>
+                        <li class="flex items-start gap-3 text-brand-gray"><i data-lucide="check" class="w-5 h-5 text-brand-red shrink-0 mt-1"></i> Ferramentas e templates exclusivos</li>
+                    </ul>
+                    
+                    <a href="#cta" class="w-full text-center border-2 border-brand-red text-white hover:bg-brand-red px-6 py-4 font-bold uppercase tracking-widest sharp-edge transition-all">
+                        Aplicar para Mentoria
+                    </a>
+                </div>
+
+                <!-- Path 2: Licença -->
+                <div class="border border-brand-red bg-brand-dark/80 p-10 sharp-edge flex flex-col h-full relative overflow-hidden group shadow-[0_0_50px_rgba(225,70,28,0.1)]">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-brand-red/20 rounded-full blur-[80px] group-hover:bg-brand-red/30 transition-colors"></div>
+                    
+                    <div class="mb-8 relative z-10">
+                        <div class="inline-block bg-brand-red text-white px-4 py-2 text-xs font-bold uppercase tracking-widest sharp-edge mb-6 shadow-[0_0_20px_rgba(225,70,28,0.4)]">A Parceria</div>
+                        <h3 class="text-3xl font-black uppercase text-white mb-4">Licença Painap</h3>
+                        <p class="text-brand-gray text-lg leading-relaxed">Para quem quer pular etapas. Torne-se um arquiteto licenciado e opere sob a autoridade e o guarda-chuva da Painap.</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-10 flex-grow relative z-10">
+                        <li class="flex items-start gap-3 text-white"><i data-lucide="check" class="w-5 h-5 text-brand-accent shrink-0 mt-1"></i> Chancela oficial da marca Painap</li>
+                        <li class="flex items-start gap-3 text-white"><i data-lucide="check" class="w-5 h-5 text-brand-accent shrink-0 mt-1"></i> Acesso ao ecossistema de clientes B2B</li>
+                        <li class="flex items-start gap-3 text-white"><i data-lucide="check" class="w-5 h-5 text-brand-accent shrink-0 mt-1"></i> Suporte contínuo da diretoria</li>
+                        <li class="flex items-start gap-3 text-white"><i data-lucide="check" class="w-5 h-5 text-brand-accent shrink-0 mt-1"></i> Exigência de altíssimo nível técnico</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/5517988382989?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Licenciamento%20Painap." class="w-full text-center bg-brand-red text-white px-6 py-4 font-bold uppercase tracking-widest sharp-edge shadow-[0_0_30px_rgba(225,70,28,0.3)] hover:scale-[1.02] transition-transform relative z-10">
+                        Aplicar para Licenciamento
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS SECTION -->
+    <section class="py-24 bg-brand-dark border-y border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tight">Como Funciona o <span class="text-brand-red">2:1 Mentoring</span>?</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-brand-black border border-white/10 p-8 sharp-edge flex gap-6 reveal hover:border-brand-red/50 transition-colors">
+                    <div class="bg-brand-red/10 p-4 shrink-0 text-brand-red">
+                        <i data-lucide="users" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold uppercase mb-2">Diagnóstico Individual 1:1</h3>
+                        <p class="text-brand-gray">Encontro inicial para entender seu momento, definir metas e plano personalizado.</p>
+                    </div>
+                </div>
+                <div class="bg-brand-black border border-white/10 p-8 sharp-edge flex gap-6 reveal hover:border-brand-red/50 transition-colors" style="transition-delay: 0.1s;">
+                    <div class="bg-brand-red/10 p-4 shrink-0 text-brand-red">
+                        <i data-lucide="video" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold uppercase mb-2">Mentorias Quinzenais em Grupo</h3>
+                        <p class="text-brand-gray">Encontros ao vivo para aprofundar os pilares, trocar experiências e tirar dúvidas.</p>
+                    </div>
+                </div>
+                <div class="bg-brand-black border border-white/10 p-8 sharp-edge flex gap-6 reveal hover:border-brand-red/50 transition-colors">
+                    <div class="bg-brand-red/10 p-4 shrink-0 text-brand-red">
+                        <i data-lucide="message-circle" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold uppercase mb-2">Grupo da Turma no WhatsApp</h3>
+                        <p class="text-brand-gray">Rede de apoio para interação com as mentoras e outros mentorados.</p>
+                    </div>
+                </div>
+                <div class="bg-brand-black border border-white/10 p-8 sharp-edge flex gap-6 reveal hover:border-brand-red/50 transition-colors" style="transition-delay: 0.1s;">
+                    <div class="bg-brand-red/10 p-4 shrink-0 text-brand-red">
+                        <i data-lucide="briefcase" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold uppercase mb-2">Ferramentas Exclusivas</h3>
+                        <p class="text-brand-gray">Templates, checklists, modelos de processos e tudo o que usamos no escritório.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BONUS SECTION -->
+    <section class="py-24 bg-brand-black relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <div class="inline-block bg-brand-red text-white px-4 py-2 text-xs font-bold uppercase tracking-widest sharp-edge mb-4">Exclusivo</div>
+                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tight">Bônus da <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-brand-red">1ª Turma</span></h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="border border-white/5 bg-brand-dark/50 p-8 sharp-edge text-center reveal border-t-2 border-t-transparent hover:border-t-brand-red transition-all">
+                    <i data-lucide="flame" class="w-12 h-12 text-brand-red mx-auto mb-6"></i>
+                    <h3 class="text-xl font-bold uppercase mb-4">Hot Seat 2:1</h3>
+                    <p class="text-brand-gray">Sessão individual de revisão estratégica ao final da mentoria.</p>
+                </div>
+                <div class="border border-white/5 bg-brand-dark/50 p-8 sharp-edge text-center reveal border-t-2 border-t-transparent hover:border-t-brand-red transition-all" style="transition-delay: 0.1s;">
+                    <i data-lucide="target" class="w-12 h-12 text-brand-red mx-auto mb-6"></i>
+                    <h3 class="text-xl font-bold uppercase mb-4">Acompanhamento Real</h3>
+                    <p class="text-brand-gray">Um mentorado será escolhido para acompanhar de perto um projeto real da Arquitetura de Consumo.</p>
+                </div>
+                <div class="border border-white/5 bg-brand-dark/50 p-8 sharp-edge text-center reveal border-t-2 border-t-transparent hover:border-t-brand-red transition-all" style="transition-delay: 0.2s;">
+                    <i data-lucide="file-text" class="w-12 h-12 text-brand-red mx-auto mb-6"></i>
+                    <h3 class="text-xl font-bold uppercase mb-4">Proposta Comercial</h3>
+                    <p class="text-brand-gray">Acesso exclusivo ao nosso modelo de proposta comercial validado que fecha clientes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPLICATION / CTA -->
+    <section id="cta" class="py-32 relative bg-brand-dark overflow-hidden border-t border-brand-red/30">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-full bg-brand-red/20 blur-[150px] pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-brand-accent/10 blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10 reveal">
+            <div class="mb-8 inline-block px-4 py-1 border border-brand-red/50 bg-brand-red/10 text-brand-red text-sm font-bold uppercase tracking-widest sharp-edge">
+                <span class="w-2 h-2 inline-block rounded-full bg-brand-red animate-pulse mr-2"></span> Vagas Abertas &mdash; 1ª Turma
+            </div>
+            
+            <h2 class="text-5xl md:text-6xl font-black text-white tracking-tighter uppercase mb-6 leading-tight">
+                Chega de esperar o projeto<br><span class="font-luxury text-7xl md:text-8xl text-brand-red text-glow">certo aparecer.</span>
+            </h2>
+
+            <p class="text-xl md:text-2xl text-brand-gray mb-12 max-w-3xl mx-auto font-medium leading-relaxed">
+                A Mentoria 2:1 é para arquitetos que já sabem que o modelo residencial tem limite &mdash; e querem uma operação que cresce sem depender de sorte, indicação ou temporada.
+            </p>
+
+            <div class="bg-brand-black/50 border border-white/10 p-8 md:p-12 sharp-edge backdrop-blur-md max-w-3xl mx-auto mb-12 relative overflow-hidden text-left group">
+                <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-brand-red to-brand-dark group-hover:w-2 transition-all duration-300"></div>
+                <h3 class="text-2xl font-bold uppercase mb-8">O que você vai receber:</h3>
+                
+                <div class="space-y-6 mb-10">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 shrink-0 rounded-full bg-brand-red/20 flex items-center justify-center">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-red"></i>
+                        </div>
+                        <div>
+                            <strong class="text-white text-lg uppercase block mb-1">Método Validado</strong>
+                            <span class="text-brand-gray">Acesso direto à metodologia responsável por mais de 1.500 projetos executados.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 shrink-0 rounded-full bg-brand-red/20 flex items-center justify-center">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-red"></i>
+                        </div>
+                        <div>
+                            <strong class="text-white text-lg uppercase block mb-1">Acompanhamento Direto</strong>
+                            <span class="text-brand-gray">Mentoria e proximidade estratégica com Pamella e Carina.</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 shrink-0 rounded-full bg-brand-red/20 flex items-center justify-center">
+                            <i data-lucide="check" class="w-4 h-4 text-brand-red"></i>
+                        </div>
+                        <div>
+                            <strong class="text-white text-lg uppercase block mb-1">Ferramentas de Escala</strong>
+                            <span class="text-brand-gray">Acesso aos nossos modelos de propostas comerciais e frameworks de gestão.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center justify-start">
+                    <a href="https://wa.me/" class="btn-hover-effect flex items-center justify-center gap-3 bg-brand-red text-white px-10 py-5 text-lg font-black uppercase tracking-widest sharp-edge w-full shadow-[0_0_40px_rgba(225,70,28,0.3)] transform hover:-translate-y-1 transition-all duration-300">
+                        Quero garantir minha vaga
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <p class="text-sm text-brand-gray uppercase tracking-widest font-bold">
+                <i data-lucide="lock" class="inline-block w-4 h-4 mb-1 text-brand-gray mr-1"></i> 
+                Vagas limitadas. Aprovação por análise de perfil.
+            </p>
+        </div>
+    </section>
+
+    <!-- PRE-QUALIFICATION SECTION (Hormozi / Ovens Framework) -->
+    <section class="py-24 bg-brand-dark border-y border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tight mb-4">O Filtro de <span class="text-brand-red">Seleção</span></h2>
+                <p class="text-xl text-brand-gray">Nós não aceitamos qualquer pessoa na mentoria. Veja se você tem o perfil.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 reveal" style="transition-delay: 0.2s;">
+                <!-- Para quem NÃO é -->
+                <div class="border border-white/10 bg-brand-black p-8 md:p-12 sharp-edge">
+                    <div class="flex items-center gap-4 mb-8 pb-4 border-b border-white/10">
+                        <div class="w-12 h-12 bg-white/5 flex items-center justify-center shrink-0">
+                            <i data-lucide="x" class="w-6 h-6 text-brand-gray"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold uppercase text-brand-gray">Para quem <span class="text-white">NÃO</span> é</h3>
+                    </div>
+                    <ul class="space-y-6">
+                        <li class="flex gap-4 items-start">
+                            <i data-lucide="x" class="w-5 h-5 text-brand-red shrink-0 mt-1"></i>
+                            <span class="text-brand-gray leading-relaxed">Arquitetos que querem apenas fazer "projetinhos" residenciais sem perspectiva de escala.</span>
+                        </li>
+                        <li class="flex gap-4 items-start">
+                            <i data-lucide="x" class="w-5 h-5 text-brand-red shrink-0 mt-1"></i>
+                            <span class="text-brand-gray leading-relaxed">Profissionais que buscam "hacks" mágicos de Instagram ao invés de estruturar uma operação comercial sólida.</span>
+                        </li>
+                        <li class="flex gap-4 items-start">
+                            <i data-lucide="x" class="w-5 h-5 text-brand-red shrink-0 mt-1"></i>
+                            <span class="text-brand-gray leading-relaxed">Pessoas que têm medo de cobrar caro pelo próprio trabalho e preferem brigar por preço.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Para quem É -->
+                <div class="border border-brand-red/30 bg-brand-red/5 p-8 md:p-12 sharp-edge relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-red/10 rounded-full blur-3xl group-hover:bg-brand-red/20 transition-colors duration-500"></div>
+                    <div class="flex items-center gap-4 mb-8 pb-4 border-b border-brand-red/20 relative z-10">
+                        <div class="w-12 h-12 bg-brand-red flex items-center justify-center shrink-0">
+                            <i data-lucide="check" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold uppercase text-white">Para quem <span class="text-brand-red">É</span></h3>
+                    </div>
+                    <ul class="space-y-6 relative z-10">
+                        <li class="flex gap-4 items-start">
+                            <i data-lucide="check" class="w-5 h-5 text-brand-red shrink-0 mt-1"></i>
+                            <span class="text-brand-gray leading-relaxed"><strong class="text-white">Arquitetos experientes</strong> que sentem que estagnaram no faturamento e querem dominar o B2B.</span>
+                        </li>
+                        <li class="flex gap-4 items-start">
+                            <i data-lucide="check" class="w-5 h-5 text-brand-red shrink-0 mt-1"></i>
+                            <span class="text-brand-gray leading-relaxed">Donos de escritórios que querem <strong class="text-white">fechar contratos de alto valor</strong> (High Ticket) com constância.</span>
+                        </li>
+                        <li class="flex gap-4 items-start">
+                            <i data-lucide="check" class="w-5 h-5 text-brand-red shrink-0 mt-1"></i>
+                            <span class="text-brand-gray leading-relaxed">Arquitetos que querem parar de ser "faz-tudo" e assumir a cadeira de <strong class="text-white">empresários estratégicos.</strong></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 bg-brand-dark border-t border-white/5 text-center">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <a href="#" class="flex items-center">
+                    <img src="logo.png" alt="2:1 Mentoring" class="h-14 w-auto logo-dark">
+                </a>
+
+                <div class="flex items-center gap-4">
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/2pra1mentoring/" target="_blank" rel="noopener noreferrer"
+                       class="flex items-center gap-3 text-brand-gray hover:text-white transition-all duration-300 group">
+                        <div class="w-11 h-11 border border-white/10 flex items-center justify-center sharp-edge group-hover:border-brand-red/50 group-hover:bg-brand-red/10 transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <circle cx="12" cy="12" r="4"/>
+                                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-widest hidden md:block">@2pra1mentoring</span>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/company/painap-arquitetura-de-consumo" target="_blank" rel="noopener noreferrer"
+                       class="flex items-center gap-3 text-brand-gray hover:text-white transition-all duration-300 group">
+                        <div class="w-11 h-11 border border-white/10 flex items-center justify-center sharp-edge group-hover:border-brand-red/50 group-hover:bg-brand-red/10 transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs font-bold uppercase tracking-widest hidden md:block">Painap</span>
+                    </a>
+                </div>
+
+                <p class="text-brand-gray text-xs font-bold uppercase tracking-widest">
+                    &copy; 2026 2:1 Mentoring. Todos os direitos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/5517988382989?text=Olá!%20Vi%20a%20página%20da%20Mentoria%202:1%20e%20gostaria%20de%20tirar%20algumas%20dúvidas." target="_blank" rel="noopener noreferrer" 
+       class="fixed bottom-6 right-6 z-[100] flex items-center justify-center w-16 h-16 bg-[#25D366] text-white rounded-full shadow-[0_0_20px_rgba(37,211,102,0.4)] hover:scale-110 hover:shadow-[0_0_30px_rgba(37,211,102,0.6)] transition-all duration-300 group">
+        <!-- Ping Effect -->
+        <span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-30 animate-ping"></span>
+        
+        <!-- Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="currentColor" stroke="none" class="relative z-10">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+        </svg>
+        
+        <!-- Tooltip -->
+        <span class="absolute right-full mr-4 bg-brand-black text-white text-xs font-bold uppercase tracking-widest px-4 py-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none border border-white/10 whitespace-nowrap shadow-xl">
+            Tire suas dúvidas
+        </span>
+    </a>
+
+    <!-- Initialize Icons and Animations -->
+    <script>
+        lucide.createIcons();
+
+        // Simple Intersection Observer for reveal animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
